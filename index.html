@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Fenix SoulAR — Productos digitales</title>
+  <meta name="description" content="Fenix SoulAR diseña y publica productos digitales para organizar y simplificar." />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --fg: #0f172a;
+      --muted: #475569;
+      --card: #f8fafc;
+      --card2:#f1f5f9;
+      --border:#e2e8f0;
+      --accent:#f59e0b;
+      --link:#0ea5e9;
+      --shadow: 0 12px 30px rgba(2,6,23,.08);
+      --radius: 18px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 600px at 70% -10%, rgba(245,158,11,.12), transparent 60%),
+        radial-gradient(900px 500px at 10% 0%, rgba(14,165,233,.10), transparent 55%),
+        var(--bg);
+    }
+
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 20px 54px}
+
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px;
+      position:sticky; top:0;
+      background:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(226,232,240,.7);
+      z-index:10;
+    }
+    header .inner{max-width:var(--max); margin:0 auto; width:100%; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:18px}
+    
+    .brand { display:flex; align-items:center; gap:16px; }
+    .fenixBlock { display:flex; flex-direction:column; align-items:center; line-height:1.1; }
+    .brand img.fenix{width:54px; height:54px; object-fit:contain}
+    .brand img.texto{height:52px; width:auto; object-fit:contain} /* Ajustado otro +20% */
+    .fenixSub { margin-top:6px; font-size:12px; opacity:.75; font-weight:600; }
+
+    .lang{
+      display:flex; align-items:center; gap:10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:6px 10px;
+      background:#fff;
+      box-shadow: 0 6px 18px rgba(2,6,23,.05);
+    }
+    .lang button{
+      border:0;
+      background:transparent;
+      padding:7px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      color:var(--muted);
+    }
+    .lang button.active{background:var(--card2); color:var(--fg)}
+    .lang .sep{width:1px; height:22px; background:var(--border)}
+
+    .hero{
+      padding:34px 0 10px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:start;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size:38px;
+      letter-spacing:-.02em;
+      line-height:1.05;
+    }
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width:62ch;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow: 0 10px 24px rgba(2,6,23,.06);
+      font-weight:700;
+      color: var(--fg);
+    }
+    .btn .dot{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+
+    .card{
+      background: linear-gradient(180deg, #fff, var(--card));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .focusTitle{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px}
+    .pill{
+      font-size:12px; font-weight:700;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(14,165,233,.10);
+      border:1px solid rgba(14,165,233,.20);
+      color:#0c4a6e;
+      white-space:nowrap;
+    }
+    .focusList{display:grid; gap:10px}
+    .mini{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px; border-radius:14px;
+      background: #fff;
+      border:1px solid rgba(226,232,240,.9);
+      text-decoration: none;
+      color: inherit;
+    }
+    .mini:hover { border-color: var(--accent); }
+    .mini .ic{
+      width:36px; height:36px; border-radius:12px;
+      display:grid; place-items:center;
+      background: rgba(245,158,11,.12);
+      border:1px solid rgba(245,158,11,.22);
+      font-weight:900;
+      color:#7c2d12;
+      flex:0 0 auto;
+    }
+    .mini h3{margin:0; font-size:14px}
+    .mini p{margin:3px 0 0; color:var(--muted); font-size:13px; line-height:1.35}
+
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .product{
+      display:flex; flex-direction:column; gap:10px;
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, #fff, #f8fafc);
+      box-shadow: var(--shadow);
+      min-height: 210px;
+    }
+    .productHeader img{
+      width:54px; height:54px; object-fit:contain;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid rgba(226,232,240,.9);
+      padding:6px;
+    }
+    .productHeader{display:flex; align-items:center; gap:12px}
+    .productHeader .name{display:flex; flex-direction:column; gap:2px}
+    .productHeader .name strong{font-size:16px}
+    .productHeader .name span{font-size:12px; color:var(--muted)}
+    .product ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.55}
+    .product .actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(148,163,184,.18);
+      border:1px solid rgba(148,163,184,.25);
+      color:#334155;
+      font-weight:700;
+    }
+
+    section{margin-top:22px}
+    .sectionTitle{
+      display:flex; align-items:end; justify-content:space-between; gap:16px;
+      margin-bottom:10px;
+    }
+    .sectionTitle h2{margin:0; font-size:18px}
+    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
+
+    footer{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid rgba(226,232,240,.8);
+      color:var(--muted);
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .small{font-size:12px}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      padding:4px 8px;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:10px;
+      color:#334155;
+    }
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns: 1fr; }
+      .grid{grid-template-columns: 1fr}
+      header{position:relative}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="brand" aria-label="Fenix SoulAR">
+        <div class="fenixBlock">
+          <img class="fenix" src="logo.png" alt="Logo Phoenix" onerror="this.style.display='none';document.getElementById('brandFallback').style.display='flex';">
+          <div class="fenixSub">Digital Products</div>
+        </div>
+        <img class="texto" src="logo-texto.png" alt="Fenix SoulAR" onerror="this.style.display='none';">
+        <div id="brandFallback" class="fallback" style="display:none">
+          <strong>Fenix SoulAR</strong>
+        </div>
+      </div>
+      <div class="lang" role="group" aria-label="Language selector">
+        <button id="btnES" type="button" class="active">ES</button>
+        <div class="sep" aria-hidden="true"></div>
+        <button id="btnEN" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <h1 data-i18n="hero_title">Productos digitales para organizar y simplificar.</h1>
+        <p data-i18n="hero_sub">
+          Fenix SoulAR es el espacio donde se diseñan y publican productos digitales útiles, claros y listos para usar.
+        </p>
+
+        <section id="productos">
+          <div class="sectionTitle">
+            <h2 data-i18n="products_title">Productos</h2>
+            <p data-i18n="products_note">Enfocados en salud y propiedades.</p>
+          </div>
+
+          <div class="grid">
+            <article class="product" aria-label="MyHealthHub">
+              <div class="productHeader">
+                <img src="logo-myhealth.png" alt="Logo MyHealthHub" onerror="this.style.display='none'">
+                <div class="name">
+                  <strong>MyHealthHub</strong>
+                  <span data-i18n="mh_tag">Asistente en Salud</span>
+                </div>
+              </div>
+              <div class="badge" data-i18n="mh_focus">Focus area: Health</div>
+              <ul>
+                <li data-i18n="mh_b1">Organizá medicación, diagnósticos, estudios y adjuntos.</li>
+                <li data-i18n="mh_b2">Generá un resumen clínico claro cuando lo necesitás.</li>
+                <li data-i18n="mh_b3">Pensado para personas y cuidadores/familia.</li>
+              </ul>
+              <div class="actions">
+                <a class="btn" href="https://myhealthhub.fenixsoular.com.ar/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span><span data-i18n="open_app">Abrir</span></a>
+              </div>
+            </article>
+
+            <article class="product" aria-label="MyRentaHub">
+              <div class="productHeader">
+                <img src="logo-myrenta.png" alt="Logo MyRentaHub" onerror="this.style.display='none'">
+                <div class="name">
+                  <strong>MyRentaHub</strong>
+                  <span data-i18n="mr_tag">Property Management Simplified</span>
+                </div>
+              </div>
+              <div class="badge" data-i18n="mr_focus">Focus area: Property</div>
+              <ul>
+                <li data-i18n="mr_b1">Administración estructurada y simple para propietarios.</li>
+                <li data-i18n="mr_b2">Contratos, pagos, comprobantes e incidencias en un solo lugar.</li>
+                <li data-i18n="mr_b3">Flujo claro, sin fricción, orientado a operación diaria.</li>
+              </ul>
+              <div class="actions">
+                <a class="btn" href="https://myrentahub.fenixsoular.com.ar/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span><span data-i18n="open_app">Abrir</span></a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <aside class="card" aria-label="Focus areas">
+        <div class="focusTitle">
+          <div>
+            <strong data-i18n="focus_title">Focus areas</strong>
+            <div class="small" style="color:var(--muted)" data-i18n="focus_sub">Líneas de producto.</div>
+          </div>
+          <span class="pill" data-i18n="focus_pill">Simple • Secure • Accessible</span>
+        </div>
+
+        <div class="focusList">
+          <div class="mini">
+            <div class="ic" aria-hidden="true">H</div>
+            <div>
+              <h3>Health</h3>
+              <p data-i18n="focus_health">Información clínica organizada, clara y lista cuando hace falta.</p>
+            </div>
+          </div>
+          <div class="mini">
+            <div class="ic" aria-hidden="true">P</div>
+            <div>
+              <h3>Property</h3>
+              <p data-i18n="focus_property">Gestión de propiedades estructurada, simple y trazable.</p>
+            </div>
+          </div>
+          <a href="https://download.fenixsoular.com.ar/" target="_blank" class="mini">
+            <div class="ic" aria-hidden="true">⬇</div>
+            <div>
+              <h3 data-i18n="focus_download_title">Centro de descargas</h3>
+              <p data-i18n="focus_download">Descargas en un solo sitio: download.fenixsoular.com.ar</p>
+            </div>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="contact">
+        <span class="small" data-i18n="contact_label">Contacto:</span>
+        <a class="kbd" href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a>
+      </div>
+      <div class="small">
+        <span>© <span id="year"></span> Fenix SoulAR</span>
+        <span aria-hidden="true"> • </span>
+        <a href="https://download.fenixsoular.com.ar/" target="_blank" rel="noopener" data-i18n="footer_download">Centro de descargas</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const dict = {
+      es: {
+        hero_title: "Productos digitales para organizar y simplificar.",
+        hero_sub: "Fenix SoulAR es el espacio donde se diseñan y publican productos digitales útiles, claros y listos para usar.",
+        products_title: "Productos",
+        products_note: "Enfocados en salud y propiedades.",
+        mh_tag: "Asistente en Salud",
+        mh_focus: "Focus area: Health",
+        mh_b1: "Organizá medicación, diagnósticos, estudios y adjuntos.",
+        mh_b2: "Generá un resumen clínico claro cuando lo necesitás.",
+        mh_b3: "Pensado para personas y cuidadores/familia.",
+        mr_tag: "Property Management Simplified",
+        mr_focus: "Focus area: Property",
+        mr_b1: "Administración estructurada y simple para propietarios.",
+        mr_b2: "Contratos, pagos, comprobantes e incidencias en un solo lugar.",
+        mr_b3: "Flujo claro, sin fricción, orientado a operación diaria.",
+        open_app: "Abrir",
+        see_downloads: "Descargas",
+        focus_title: "Focus areas",
+        focus_sub: "Líneas de producto.",
+        focus_pill: "Simple • Secure • Accessible",
+        focus_health: "Información clínica organizada, clara y lista cuando hace falta.",
+        focus_property: "Gestión de propiedades estructurada, simple y trazable.",
+        focus_download_title: "Centro de descargas",
+        focus_download: "Unificaremos las descargas en un solo sitio: download.fenixsoular.com.ar",
+        contact_label: "Contacto:",
+        footer_download: "Centro de descargas",
+      },
+      en: {
+        hero_title: "Digital products to organize and simplify.",
+        hero_sub: "Fenix SoulAR is where we design and publish useful digital products—clear, simple, and ready to use.",
+        products_title: "Products",
+        products_note: "Focused on health and property.",
+        mh_tag: "Health Assistant",
+        mh_focus: "Focus area: Health",
+        mh_b1: "Organize meds, diagnoses, tests, and attachments.",
+        mh_b2: "Generate a clear clinical summary when you need it.",
+        mh_b3: "Designed for individuals and caregivers/family.",
+        mr_tag: "Property Management Simplified",
+        mr_focus: "Focus area: Property",
+        mr_b1: "Structured, simple management for owners.",
+        mr_b2: "Contracts, payments, receipts and issues—one place.",
+        mr_b3: "Clear operational flow, built for day-to-day use.",
+        open_app: "Open",
+        see_downloads: "Downloads",
+        focus_title: "Focus areas",
+        focus_sub: "Two product lines, for now.",
+        focus_pill: "Simple • Secure • Accessible",
+        focus_health: "Organized health information—clear and ready when needed.",
+        focus_property: "Structured, simple, traceable property management.",
+        focus_download_title: "Download Center",
+        focus_download: "We’ll centralize downloads at: download.fenixsoular.com.ar",
+        contact_label: "Contact:",
+        footer_download: "Download center",
+      }
+    };
+
+    function detectLang(){
+      const saved = localStorage.getItem("fs_lang");
+      if(saved === "es" || saved === "en") return saved;
+      const nav = (navigator.language || "es").toLowerCase();
+      return nav.startsWith("es") ? "es" : "en";
+    }
+
+    function setLang(lang){
+      const d = dict[lang] || dict.es;
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(d[key]) el.innerHTML = d[key];
+      });
+      document.getElementById("btnES").classList.toggle("active", lang==="es");
+      document.getElementById("btnEN").classList.toggle("active", lang==="en");
+      localStorage.setItem("fs_lang", lang);
+    }
+
+    document.getElementById("btnES").addEventListener("click", ()=>setLang("es"));
+    document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
+    setLang(detectLang());
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
