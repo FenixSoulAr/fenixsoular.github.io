@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Download — My Health Hub</title>
+  <meta name="description" content="Download My Health Hub and keep your health information organized and accessible." />
+
+  <!-- Global Favicon -->
+  <link rel="icon" href="/assets/img/favicon-fenix.ico" type="image/x-icon">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="/assets/style.css">
+  <script defer src="/assets/site.js"></script>
+
+  <style>
+    /* Page-only layout helpers (keeps site aesthetics) */
+    .page { padding: 34px 0 54px; }
+    .container { width: min(1020px, 92vw); margin: 0 auto; }
+    .heroCard { border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(0,0,0,.18); padding: 22px; }
+    .heroCard h1 { margin: 0 0 10px; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.06; }
+    .heroCard p { margin: 0; color: rgba(255,255,255,.80); max-width: 74ch; line-height: 1.55; }
+    .badges { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    .pill { display:inline-flex; align-items:center; gap:10px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); color: rgba(255,255,255,.86); font-weight: 800; font-size: 12px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+    @media (min-width: 920px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card { border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(0,0,0,.16); padding: 18px; }
+    .card h2 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0 0 12px; color: rgba(255,255,255,.78); line-height: 1.55; }
+    .btnRow { display:flex; gap:10px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,.16); text-decoration: none; font-weight: 900; }
+    .btn.primary { background: linear-gradient(135deg, rgba(240,135,25,.98), rgba(240,135,25,.72)); color: #111; border-color: rgba(240,135,25,.85); }
+    .note { font-size: 12px; color: rgba(255,255,255,.68); line-height: 1.5; }
+    .steps { margin: 8px 0 0; padding-left: 18px; color: rgba(255,255,255,.78); line-height: 1.6; }
+    .support { margin-top: 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.03); padding: 14px 18px; }
+    .support a { color: inherit; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="brand" aria-label="Fenix SoulAR">
+        <div class="fenixBlock">
+<img src="assets/img/logo.png" alt="Fenix SoulAR" style="width:42px;height:42px;border-radius:12px;box-shadow:var(--shadow);object-fit:contain;" />
+          <div class="fenixSub">Digital Products</div>
+        </div>
+        <img class="texto" src="assets/img/logo-texto.png" alt="Fenix SoulAR" onerror="this.style.display='none';">
+        <div id="brandFallback" class="fallback" style="display:none">
+          <strong>Fenix SoulAR</strong>
+        </div>
+      </div>
+      <div class="lang" role="group" aria-label="Language selector">
+        <button id="btnES" type="button" class="active">ES</button>
+        <div class="sep" aria-hidden="true"></div>
+        <button id="btnEN" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <section class="heroCard">
+        <h1>Download My Health Hub</h1>
+        <p>
+          Keep your health information organized and accessible — appointments, medications, tests, diagnoses, and a clinical summary.
+          Use it on the web, or install it as an app (PWA) in seconds.
+        </p>
+
+        <div class="badges">
+          <span class="pill">Google Play: <strong style="color:#fff">Coming soon</strong></span>
+          <span class="pill">Web + PWA</span>
+          <span class="pill">Support: <a href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a></span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Start now (Web)</h2>
+          <p>Open the web version from any browser (desktop, tablet, or mobile).</p>
+          <div class="btnRow">
+            <a class="btn primary" href="https://salud.fenixsoular.com.ar/" target="_blank" rel="noopener">Open My Health Hub</a>
+          </div>
+          <p class="note" style="margin-top:10px">Tip: for an “app-like” experience, install it as a PWA using the steps on the right.</p>
+        </div>
+
+        <div class="card">
+          <h2>Install as an app (PWA)</h2>
+          <p>Recommended. Works without Play Store / App Store and feels like a native app.</p>
+
+          <p><strong>Android (Chrome)</strong></p>
+          <ol class="steps">
+            <li>Open <code>https://salud.fenixsoular.com.ar/</code> in Chrome.</li>
+            <li>Tap <strong>⋮</strong> (menu).</li>
+            <li>Select <strong>Install app</strong> / <strong>Add to Home screen</strong>.</li>
+          </ol>
+
+          <p style="margin-top:10px"><strong>iPhone / iPad (Safari)</strong></p>
+          <ol class="steps">
+            <li>Open <code>https://salud.fenixsoular.com.ar/</code> in Safari.</li>
+            <li>Tap <strong>Share</strong>.</li>
+            <li>Select <strong>Add to Home Screen</strong>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="support">
+        <strong>Support</strong><br>
+        If you need help, contact: <a href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
