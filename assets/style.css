@@ -1,3 +1,253 @@
+:root{
+      --orange:#F08719;
+      --g2:#757575;
+
+      --page:#f4f4f4;
+      --card:#ffffff;
+      --text:#1a1a1a;
+      --muted:#555;
+
+      --border:rgba(0,0,0,.18);
+      --border2:rgba(0,0,0,.22);
+
+      --shadow: 0 12px 26px rgba(0,0,0,.10);
+      --radius:18px;
+      --max: 1020px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 520px at 10% -10%, rgba(240,135,25,.18), transparent 55%),
+        radial-gradient(900px 520px at 95% 0%, rgba(240,135,25,.10), transparent 55%),
+        var(--page);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 54px; }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+
+    /* BRAND: two assets (icon + text logo), like your previous version */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 280px;
+    }
+    .brand-logos{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex: 0 0 auto;
+    }
+    .brand-logos img{
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.10));
+    }
+    .brand-logos .icon{
+      width:72px;
+      height:72px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: transparent;
+    }
+    .brand-logos .wordmark{
+      height:36px;
+      width:auto;
+    }
+
+    .titleblock{ display:flex; flex-direction:column; gap:4px; }
+    h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    .lang{
+      display:flex; align-items:center; gap:12px;
+    }
+    .lang button{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.02);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 12px;
+      font-weight:900;
+      cursor:pointer;
+      font-size:12px;
+      min-width: 54px;
+    }
+    .lang button.active{
+      border-color: rgba(240,135,25,.65);
+      background: rgba(240,135,25,.14);
+    }
+
+    .hero{
+      margin: 10px 0 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:stretch;
+      justify-content:space-between;
+    }
+    .hero .primary{
+      flex: 1 1 420px;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(77,77,77,.45);
+      background: rgba(77,77,77,.92); /* brand dark gray */
+      color: rgba(255,255,255,.92);
+      font-size:12px;
+      font-weight:900;
+    }
+    .pill strong{ color: #ffffff; }
+
+    .hero .primary h2{
+      margin:10px 0 6px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .hero .primary p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.02);
+      color: var(--text);
+      cursor:pointer;
+      user-select:none;
+      min-width: 220px;
+    }
+    .btn.primary{
+      border-color: rgba(240,135,25,.85);
+      background: linear-gradient(135deg, rgba(240,135,25,.95), rgba(240,135,25,.75));
+      color: #111;
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+    .btn.ghost:hover{ background: rgba(0,0,0,.04); }
+
+    .hint{ margin-top:10px; color: var(--g2); font-size: 12px; line-height:1.4; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+      margin-top: 10px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      scroll-margin-top: 20px;
+    }
+    @media (min-width: 940px){
+      .card{ grid-column: span 4; }
+    }
+    .card.active{
+      outline: 2px solid rgba(240,135,25,.70);
+      box-shadow: 0 0 0 6px rgba(240,135,25,.12), var(--shadow);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-size: 12px;
+      color: var(--g2);
+      margin-bottom: 10px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(240,135,25,.14);
+    }
+    .card h3{ margin: 0 0 8px; font-size: 18px; }
+    .card p{ margin: 0 0 12px; color: var(--muted); line-height: 1.5; font-size: 14px; }
+
+    ol{
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    code{
+      background: rgba(0,0,0,.03);
+      border:1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .note{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--g2);
+      font-size: 12px;
+      line-height:1.45;
+    }
+
+    footer{
+      margin-top: 22px;
+      text-align:center;
+      color: var(--g2);
+      font-size: 12px;
+      opacity: .98;
+    }
+
+    [data-lang]{ display:none; }
+    [data-lang].show{ display:block; }
+
+
+/* --- legacy assets/style.css (kept for safety) --- */
 :root { color-scheme: dark; }
 
 body {
