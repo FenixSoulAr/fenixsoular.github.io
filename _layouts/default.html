@@ -1,29 +1,53 @@
 <!doctype html>
-<html lang="{{ page.lang | default: site.lang }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}" />
 
-  <!-- Global favicon -->
-  <link rel="icon" href="/assets/img/favicon-fenix.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/img/site.webmanifest" />
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="/assets/style.css">
-{% if page.extra_css %}
-  <link rel="stylesheet" href="{{ page.extra_css }}">
-{% endif %}
-
-  <!-- Global JS -->
-  <script defer src="/assets/site.js"></script>
-{% if page.extra_js %}
-  <script defer src="{{ page.extra_js }}"></script>
-{% endif %}
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script src="/assets/site.js" defer></script>
 </head>
+
 <body>
-  {{ content }}
+  <!-- Shared header (same for all pages) -->
+  <header class="siteHeader">
+    <div class="wrap headRow">
+      <div class="brand">
+        <a class="brandLink" href="/" aria-label="Fenix SoulAR Home">
+          <img class="brandLogo" src="/assets/img/logo.png" alt="Fenix SoulAR logo" />
+          <img class="brandText" src="/assets/img/logo-texto.png" alt="Fenix SoulAR" />
+        </a>
+        <div class="brandSub">Digital Products</div>
+      </div>
+
+      <div class="langPill" role="group" aria-label="Language switch">
+        <button class="langBtn" id="btnES" type="button">ES</button>
+        <span class="langSep" aria-hidden="true"></span>
+        <button class="langBtn" id="btnEN" type="button">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {{ content }}
+  </main>
+
+  <!-- Shared footer -->
+  <footer class="siteFooter">
+    <div class="wrap footRow">
+      © <span id="year"></span> Fenix SoulAR
+    </div>
+  </footer>
+
+  <script>
+    // Footer year only (kept tiny and safe)
+    (function(){ try{ document.getElementById('year').textContent = new Date().getFullYear(); }catch(e){} })();
+  </script>
 </body>
 </html>
