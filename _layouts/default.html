@@ -23,7 +23,30 @@
 </head>
 
 <body>
-  {{ content }}
+<header>
+<div class="brand">
+<div aria-label="FenixSoulAr branding" class="brand-logos">
+<!-- IMPORTANT: relative paths so it works in Pages root -->
+<img alt="FenixSoulAr" class="icon" src="logo.png"/>
+</div>
+<div class="titleblock">
+<h1 id="appTitle">Mi Salud</h1>
+<p class="subtitle" data-i18n="subtitle"></p>
+</div>
+</div>
+<div aria-label="Language switcher" class="lang">
+<button class="active" id="btn-es" type="button">ES</button>
+<button id="btn-en" type="button">EN</button>
+</div>
+</header>
+
+  <main class="wrap">
+    {{ content }}
+  </main>
+
+<footer>
+      © <span id="year"></span> FenixSoulAr • <span id="footerAppName">Mi Salud</span>
+</footer>
 
   {% if page.extra_js %}
   <script defer src="{{ page.extra_js }}"></script>
