@@ -1,53 +1,50 @@
+---
+---
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title | default: site.title }}</title>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
-  <link rel="manifest" href="/assets/img/site.webmanifest" />
-
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <link rel="icon" href="/assets/img/favicon-fenix.ico" />
   <link rel="stylesheet" href="/assets/style.css" />
   <script src="/assets/site.js" defer></script>
 </head>
-
 <body>
-  <!-- Shared header (same for all pages) -->
-  <header class="siteHeader">
-    <div class="wrap headRow">
-      <div class="brand">
-        <a class="brandLink" href="/" aria-label="Fenix SoulAR Home">
-          <img class="brandLogo" src="/assets/img/logo.png" alt="Fenix SoulAR logo" />
-          <img class="brandText" src="/assets/img/logo-texto.png" alt="Fenix SoulAR" />
-        </a>
-        <div class="brandSub">Digital Products</div>
+<header>
+    <div class="inner">
+      <div class="brand" aria-label="Fenix SoulAR">
+        <div class="fenixBlock">
+<img src="assets/img/logo.png" alt="Fenix SoulAR" style="width:42px;height:42px;border-radius:12px;box-shadow:var(--shadow);object-fit:contain;" />
+          <div class="fenixSub">Digital Products</div>
+        </div>
+        <img class="texto" src="assets/img/logo-texto.png" alt="Fenix SoulAR" onerror="this.style.display='none';">
+        <div id="brandFallback" class="fallback" style="display:none">
+          <strong>Fenix SoulAR</strong>
+        </div>
       </div>
-
-      <div class="langPill" role="group" aria-label="Language switch">
-        <button class="langBtn" id="btnES" type="button">ES</button>
-        <span class="langSep" aria-hidden="true"></span>
-        <button class="langBtn" id="btnEN" type="button">EN</button>
+      <div class="lang" role="group" aria-label="Language selector">
+        <button id="btnES" type="button" class="active">ES</button>
+        <div class="sep" aria-hidden="true"></div>
+        <button id="btnEN" type="button">EN</button>
       </div>
     </div>
   </header>
-
-  <main class="wrap">
-    {{ content }}
-  </main>
-
-  <!-- Shared footer -->
-  <footer class="siteFooter">
-    <div class="wrap footRow">
-      © <span id="year"></span> Fenix SoulAR
-    </div>
-  </footer>
-
-  <script>
-    // Footer year only (kept tiny and safe)
-    (function(){ try{ document.getElementById('year').textContent = new Date().getFullYear(); }catch(e){} })();
-  </script>
+<main class="wrap">
+  {{ content }}
+</main>
+<footer>
+      <a href="/privacy/">Privacy Policy</a>
+      <div class="contact">
+        <span class="small" data-i18n="contact_label">Contacto:</span>
+        <a class="kbd" href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a>
+      </div>
+      <div class="small">
+        <span>© <span id="year"></span> Fenix SoulAR</span>
+        <span aria-hidden="true"> • </span>
+        <a href="https://download.fenixsoular.com.ar/" target="_blank" rel="noopener" data-i18n="footer_download">Centro de descargas</a>
+      </div>
+    </footer>
 </body>
 </html>
