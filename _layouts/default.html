@@ -8,48 +8,22 @@
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}" />
 
-  <!-- Global Favicon -->
+  <!-- Global favicon -->
   <link rel="icon" href="/assets/img/favicon-fenix.ico" type="image/x-icon">
 
-  <!-- Global Styles -->
+  <!-- Global styles -->
   <link rel="stylesheet" href="/assets/style.css">
-
-  {% if page.extra_css %}
+{% if page.extra_css %}
   <link rel="stylesheet" href="{{ page.extra_css }}">
-  {% endif %}
+{% endif %}
 
   <!-- Global JS -->
   <script defer src="/assets/site.js"></script>
-</head>
-
-<body>
-<header>
-<div class="brand">
-<div aria-label="FenixSoulAr branding" class="brand-logos">
-<!-- IMPORTANT: relative paths so it works in Pages root -->
-<img alt="FenixSoulAr" class="icon" src="logo.png"/>
-</div>
-<div class="titleblock">
-<h1 id="appTitle">Mi Salud</h1>
-<p class="subtitle" data-i18n="subtitle"></p>
-</div>
-</div>
-<div aria-label="Language switcher" class="lang">
-<button class="active" id="btn-es" type="button">ES</button>
-<button id="btn-en" type="button">EN</button>
-</div>
-</header>
-
-  <main class="wrap">
-    {{ content }}
-  </main>
-
-<footer>
-      © <span id="year"></span> FenixSoulAr • <span id="footerAppName">Mi Salud</span>
-</footer>
-
-  {% if page.extra_js %}
+{% if page.extra_js %}
   <script defer src="{{ page.extra_js }}"></script>
-  {% endif %}
+{% endif %}
+</head>
+<body>
+  {{ content }}
 </body>
 </html>
