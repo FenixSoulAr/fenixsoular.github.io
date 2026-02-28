@@ -1,118 +1,506 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-  <title>Download — My Health Hub</title>
-  <meta name="description" content="Download My Health Hub and keep your health information organized and accessible." />
 
-  <!-- IMPORTANT: make all relative URLs resolve from site root -->
-  <base href="/" />
-
-  <!-- Global Favicon -->
+  <!-- Favicons -->
   <link rel="icon" href="/assets/img/favicon-fenix.ico" type="image/x-icon">
+  <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- Title will be set dynamically based on language -->
+<title>My Health Hub | Download</title>
+<meta content="Download My Health Hub: use the web app (PWA) or install from your browser." name="description"/>
+<style>
+    :root{
+      --orange:#F08719;
+      --g2:#757575;
 
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="/assets/style.css">
-  <script defer src="/assets/site.js"></script>
+      --page:#f4f4f4;
+      --card:#ffffff;
+      --text:#1a1a1a;
+      --muted:#555;
 
-  <style>
-    /* Page-only layout helpers (keeps site aesthetics) */
-    .page { padding: 34px 0 54px; }
-    .container { width: min(1020px, 92vw); margin: 0 auto; }
-    .heroCard { border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(0,0,0,.18); padding: 22px; }
-    .heroCard h1 { margin: 0 0 10px; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.06; }
-    .heroCard p { margin: 0; color: rgba(255,255,255,.80); max-width: 74ch; line-height: 1.55; }
-    .badges { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
-    .pill { display:inline-flex; align-items:center; gap:10px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.22); color: rgba(255,255,255,.86); font-weight: 800; font-size: 12px; }
-    .grid { display:grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
-    @media (min-width: 920px) { .grid { grid-template-columns: 1fr 1fr; } }
-    .card { border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(0,0,0,.16); padding: 18px; }
-    .card h2 { margin: 0 0 8px; font-size: 18px; }
-    .card p { margin: 0 0 12px; color: rgba(255,255,255,.78); line-height: 1.55; }
-    .btnRow { display:flex; gap:10px; flex-wrap: wrap; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,.16); text-decoration: none; font-weight: 900; }
-    .btn.primary { background: linear-gradient(135deg, rgba(240,135,25,.98), rgba(240,135,25,.72)); color: #111; border-color: rgba(240,135,25,.85); }
-    .note { font-size: 12px; color: rgba(255,255,255,.68); line-height: 1.5; }
-    .steps { margin: 8px 0 0; padding-left: 18px; color: rgba(255,255,255,.78); line-height: 1.6; }
-    .support { margin-top: 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.03); padding: 14px 18px; }
-    .support a { color: inherit; }
+      --border:rgba(0,0,0,.18);
+      --border2:rgba(0,0,0,.22);
+
+      --shadow: 0 12px 26px rgba(0,0,0,.10);
+      --radius:18px;
+      --max: 1020px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 520px at 10% -10%, rgba(240,135,25,.18), transparent 55%),
+        radial-gradient(900px 520px at 95% 0%, rgba(240,135,25,.10), transparent 55%),
+        var(--page);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 54px; }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+
+    /* BRAND: two assets (icon + text logo), like your previous version */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width: 280px;
+    }
+    .brand-logos{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex: 0 0 auto;
+    }
+    .brand-logos img{
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.10));
+    }
+    .brand-logos .icon{
+      width:72px;
+      height:72px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: transparent;
+    }
+    .brand-logos .wordmark{
+      height:36px;
+      width:auto;
+    }
+
+    .titleblock{ display:flex; flex-direction:column; gap:4px; }
+    h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    .lang{
+      display:flex; align-items:center; gap:12px;
+    }
+    .lang button{
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.02);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 9px 12px;
+      font-weight:900;
+      cursor:pointer;
+      font-size:12px;
+      min-width: 54px;
+    }
+    .lang button.active{
+      border-color: rgba(240,135,25,.65);
+      background: rgba(240,135,25,.14);
+    }
+
+    .hero{
+      margin: 10px 0 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:stretch;
+      justify-content:space-between;
+    }
+    .hero .primary{
+      flex: 1 1 420px;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(77,77,77,.45);
+      background: rgba(77,77,77,.92); /* brand dark gray */
+      color: rgba(255,255,255,.92);
+      font-size:12px;
+      font-weight:900;
+    }
+    .pill strong{ color: #ffffff; }
+
+    .hero .primary h2{
+      margin:10px 0 6px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .hero .primary p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .ctaRow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.02);
+      color: var(--text);
+      cursor:pointer;
+      user-select:none;
+      min-width: 220px;
+    }
+    .btn.primary{
+      border-color: rgba(240,135,25,.85);
+      background: linear-gradient(135deg, rgba(240,135,25,.95), rgba(240,135,25,.75));
+      color: #111;
+    }
+    .btn.primary:hover{ filter: brightness(1.03); }
+    .btn.ghost:hover{ background: rgba(0,0,0,.04); }
+
+    .hint{ margin-top:10px; color: var(--g2); font-size: 12px; line-height:1.4; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+      margin-top: 10px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      scroll-margin-top: 20px;
+    }
+    @media (min-width: 940px){
+      .card{ grid-column: span 4; }
+    }
+    .card.active{
+      outline: 2px solid rgba(240,135,25,.70);
+      box-shadow: 0 0 0 6px rgba(240,135,25,.12), var(--shadow);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-size: 12px;
+      color: var(--g2);
+      margin-bottom: 10px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(240,135,25,.14);
+    }
+    .card h3{ margin: 0 0 8px; font-size: 18px; }
+    .card p{ margin: 0 0 12px; color: var(--muted); line-height: 1.5; font-size: 14px; }
+
+    ol{
+      margin: 0 0 12px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    code{
+      background: rgba(0,0,0,.03);
+      border:1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .note{
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--g2);
+      font-size: 12px;
+      line-height:1.45;
+    }
+
+    footer{
+      margin-top: 22px;
+      text-align:center;
+      color: var(--g2);
+      font-size: 12px;
+      opacity: .98;
+    }
+
+    [data-lang]{ display:none; }
+    [data-lang].show{ display:block; }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="inner">
-      <div class="brand" aria-label="Fenix SoulAR">
-        <div class="fenixBlock">
-<img src="assets/img/logo.png" alt="Fenix SoulAR" style="width:42px;height:42px;border-radius:12px;box-shadow:var(--shadow);object-fit:contain;" />
-          <div class="fenixSub">Digital Products</div>
-        </div>
-        <img class="texto" src="assets/img/logo-texto.png" alt="Fenix SoulAR" onerror="this.style.display='none';">
-        <div id="brandFallback" class="fallback" style="display:none">
-          <strong>Fenix SoulAR</strong>
-        </div>
-      </div>
-      <div class="lang" role="group" aria-label="Language selector">
-        <button id="btnES" type="button" class="active">ES</button>
-        <div class="sep" aria-hidden="true"></div>
-        <button id="btnEN" type="button">EN</button>
-      </div>
-    </div>
-  </header>
+<div class="wrap">
+<header>
+<div class="brand">
+<div aria-label="FenixSoulAr branding" class="brand-logos">
+<!-- IMPORTANT: relative paths so it works in Pages root -->
+<img alt="FenixSoulAr" class="icon" src="/assets/img/logo.png"/>
+</div>
+<div class="titleblock">
+<h1 id="appTitle">My Health Hub</h1>
+<p class="subtitle" data-i18n="subtitle"></p>
+</div>
+</div>
+<div aria-label="Language switcher" class="lang">
+<button class="active" id="btn-es" type="button">ES</button>
+<button id="btn-en" type="button">EN</button>
+</div>
+</header>
+<section class="hero">
+<div class="primary">
+<div class="pill"><span data-i18n="device_detected"></span> <strong id="deviceName">—</strong></div>
+<h2 data-i18n="hero_title"></h2>
+<p data-i18n="hero_body"></p>
+<div class="ctaRow">
+<a class="btn primary" href="#" id="smartCta" role="button"></a>
+<button class="btn ghost" id="showOptions" type="button"></button>
+</div>
+<div class="hint" id="heroHint"></div>
+</div>
+</section>
+<div class="grid">
+<section aria-label="Android" class="card" id="card-android">
+<div class="badge"><span class="dot"></span><span>Android</span></div>
+<div class="show" data-lang="es">
+<h3>Android</h3>
+<p>Instalación sin Play Store (PWA). Hacelo desde <strong>Chrome</strong> (o Edge).</p>
+<ol>
+<li>Abrí <strong>Chrome</strong>.</li>
+<li>Entrá a <code>salud.fenixsoular.com.ar</code></li>
+<li>Tocá el menú <strong>⋮</strong>.</li>
+<li>Elegí <strong>“Agregar a la pantalla principal”</strong> o <strong>“Instalar app”</strong> (según el dispositivo).</li>
+<li>Confirmá <strong>Agregar</strong> / <strong>Instalar</strong>.</li>
+</ol>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Abrir la app</a>
+<div class="note">El botón abre la web. Para “instalar”, seguí los pasos de arriba en Chrome.</div>
+</div>
+<div data-lang="en">
+<h3>Android</h3>
+<p>No Play Store needed (PWA). Use <strong>Chrome</strong> (or Edge).</p>
+<ol>
+<li>Open <strong>Chrome</strong>.</li>
+<li>Go to <code>salud.fenixsoular.com.ar</code></li>
+<li>Tap the <strong>⋮</strong> menu.</li>
+<li>Select <strong>“Add to Home screen”</strong> or <strong>“Install app”</strong> (device-dependent).</li>
+<li>Confirm <strong>Add</strong> / <strong>Install</strong>.</li>
+</ol>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Open the app</a>
+<div class="note">The button opens the web. To “install”, follow the steps above in Chrome.</div>
+</div>
+</section>
+<section aria-label="iPhone / iPad" class="card" id="card-ios">
+<div class="badge"><span class="dot"></span><span>iPhone / iPad</span></div>
+<div class="show" data-lang="es">
+<h3>iPhone / iPad</h3>
+<p>Instalación sin App Store (PWA). Importante: hacelo desde <strong>Safari</strong>.</p>
+<ol>
+<li>Abrí <strong>Safari</strong>.</li>
+<li>Entrá a <code>salud.fenixsoular.com.ar</code></li>
+<li>Tocá <strong>Compartir</strong> (cuadrado con flecha).</li>
+<li>Elegí <strong>“Agregar a pantalla de inicio”</strong>.</li>
+<li>Tocá <strong>Agregar</strong>.</li>
+</ol>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Abrir la app</a>
+<div class="note">El botón abre la web. Para “instalar”, usá los pasos de arriba en Safari.</div>
+</div>
+<div data-lang="en">
+<h3>iPhone / iPad</h3>
+<p>No App Store needed (PWA). Important: use <strong>Safari</strong>.</p>
+<ol>
+<li>Open <strong>Safari</strong>.</li>
+<li>Go to <code>salud.fenixsoular.com.ar</code></li>
+<li>Tap <strong>Share</strong> (square with arrow).</li>
+<li>Select <strong>“Add to Home Screen”</strong>.</li>
+<li>Tap <strong>Add</strong>.</li>
+</ol>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Open the app</a>
+<div class="note">The button opens the web. To “install”, follow the steps above in Safari.</div>
+</div>
+</section>
+<section aria-label="Web" class="card" id="card-web">
+<div class="badge"><span class="dot"></span><span>Web</span></div>
+<div class="show" data-lang="es">
+<h3>Usar desde la web</h3>
+<p>Podés usar la app directamente desde cualquier navegador (PC, tablet o móvil).</p>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Usar versión web</a>
+<div class="note">Ideal si querés entrar rápido sin instalar nada.</div>
+</div>
+<div data-lang="en">
+<h3>Use on the web</h3>
+<p>Use the app from any browser (desktop, tablet, or mobile).</p>
+<a class="btn primary" href="https://salud.fenixsoular.com.ar/" rel="noopener" target="_blank">Use web version</a>
+<div class="note">Best if you want instant access without installing.</div>
+</div>
+</section>
+</div>
+<footer>
+      © <span id="year"></span> FenixSoulAr • <span id="footerAppName">My Health Hub</span>
+</footer>
+</div>
+<script>
+    function detectDevice(){
+      const ua = navigator.userAgent || "";
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+      const isMobile = /Mobi/i.test(ua) || isAndroid || isIOS;
+      if (isAndroid) return { key:"android", label:"Android" };
+      if (isIOS) return { key:"ios", label:"iPhone / iPad" };
+      return { key:"web", label: isMobile ? "Mobile (browser)" : "Desktop (browser)" };
+    }
 
-  <main class="page">
-    <div class="container">
-      <section class="heroCard">
-        <h1>Download My Health Hub</h1>
-        <p>
-          Keep your health information organized and accessible — appointments, medications, tests, diagnoses, and a clinical summary.
-          Use it on the web, or install it as an app (PWA) in seconds.
-        </p>
+    function detectLang(){
+      const lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      return lang.startsWith("es") ? "es" : "en";
+    }
 
-        <div class="badges">
-          <span class="pill">Google Play: <strong style="color:#fff">Coming soon</strong></span>
-          <span class="pill">Web + PWA</span>
-          <span class="pill">Support: <a href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a></span>
-        </div>
-      </section>
+    const i18n = {
+      es: {
+        appName: "My Health Hub",
+        pageTitle: "My Health Hub | Download",
+        metaDescription: "Use My Health Hub on the web (PWA) or install it from your browser (Android/iPhone/iPad).",
+        subtitle: "Elegí cómo usar la app: Android (instalar desde Chrome), iPhone/iPad (instalar desde Safari) o versión web.",
+        device_detected: "Dispositivo detectado:",
+        hero_title: "Empezar (según tu dispositivo)",
+        hero_body: "Este botón elige automáticamente la mejor opción para tu dispositivo.",
+        cta_android: "Ver pasos para Android",
+        cta_ios: "Ver pasos para iPhone / iPad",
+        cta_web: "Usar versión web",
+        see_options: "Ver todas las opciones",
+        hint_android: "En Android la instalación se hace desde Chrome: Menú ⋮ → Instalar app / Agregar a pantalla principal.",
+        hint_ios: "En iPhone/iPad la instalación se hace desde Safari: Compartir → Agregar a pantalla de inicio.",
+        hint_web: "Podés usarla desde la web sin instalar nada."
+      },
+      en: {
+        appName: "My Health Hub",
+        pageTitle: "My Health Hub | Download",
+        metaDescription: "Install My Health Hub on Android or iPhone/iPad as an app (PWA), or use the web version.",
+        subtitle: "Choose how to use the app: Android (install from Chrome), iPhone/iPad (install from Safari), or web version.",
+        device_detected: "Device detected:",
+        hero_title: "Get started (based on your device)",
+        hero_body: "This button automatically chooses the best option for your device.",
+        cta_android: "See Android steps",
+        cta_ios: "See iPhone / iPad steps",
+        cta_web: "Use web version",
+        see_options: "See all options",
+        hint_android: "On Android, install from Chrome: ⋮ menu → Install app / Add to Home screen.",
+        hint_ios: "On iPhone/iPad, install from Safari: Share → Add to Home Screen.",
+        hint_web: "You can use it on the web without installing."
+      }
+    };
 
-      <section class="grid">
-        <div class="card">
-          <h2>Start now (Web)</h2>
-          <p>Open the web version from any browser (desktop, tablet, or mobile).</p>
-          <div class="btnRow">
-            <a class="btn primary" href="https://salud.fenixsoular.com.ar/" target="_blank" rel="noopener">Open My Health Hub</a>
-          </div>
-          <p class="note" style="margin-top:10px">Tip: for an “app-like” experience, install it as a PWA using the steps on the right.</p>
-        </div>
+    const btnEs = document.getElementById("btn-es");
+    const btnEn = document.getElementById("btn-en");
+    const blocks = document.querySelectorAll("[data-lang]");
+    const subtitle = document.querySelector("[data-i18n='subtitle']");
 
-        <div class="card">
-          <h2>Install as an app (PWA)</h2>
-          <p>Recommended. Works without Play Store / App Store and feels like a native app.</p>
+    const appTitle = document.getElementById("appTitle");
+    const footerAppName = document.getElementById("footerAppName");
+    const metaDesc = document.querySelector("meta[name='description']");
 
-          <p><strong>Android (Chrome)</strong></p>
-          <ol class="steps">
-            <li>Open <code>https://salud.fenixsoular.com.ar/</code> in Chrome.</li>
-            <li>Tap <strong>⋮</strong> (menu).</li>
-            <li>Select <strong>Install app</strong> / <strong>Add to Home screen</strong>.</li>
-          </ol>
+    const deviceName = document.getElementById("deviceName");
+    const heroTitle = document.querySelector("[data-i18n='hero_title']");
+    const heroBody  = document.querySelector("[data-i18n='hero_body']");
+    const deviceDetectedLabel = document.querySelector("[data-i18n='device_detected']");
+    const smartCta  = document.getElementById("smartCta");
+    const showOptions = document.getElementById("showOptions");
+    const heroHint = document.getElementById("heroHint");
 
-          <p style="margin-top:10px"><strong>iPhone / iPad (Safari)</strong></p>
-          <ol class="steps">
-            <li>Open <code>https://salud.fenixsoular.com.ar/</code> in Safari.</li>
-            <li>Tap <strong>Share</strong>.</li>
-            <li>Select <strong>Add to Home Screen</strong>.</li>
-          </ol>
-        </div>
-      </section>
+    const cardAndroid = document.getElementById("card-android");
+    const cardIOS = document.getElementById("card-ios");
+    const cardWeb = document.getElementById("card-web");
 
-      <section class="support">
-        <strong>Support</strong><br>
-        If you need help, contact: <a href="mailto:fenixsoular@gmail.com">fenixsoular@gmail.com</a>
-      </section>
-    </div>
-  </main>
+    function clearActive(){ [cardAndroid, cardIOS, cardWeb].forEach(c => c.classList.remove("active")); }
+    function scrollToCard(card){
+      clearActive();
+      card.classList.add("active");
+      card.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function setLang(lang){
+      btnEs.classList.toggle("active", lang === "es");
+      btnEn.classList.toggle("active", lang === "en");
+      blocks.forEach(el => el.classList.toggle("show", el.getAttribute("data-lang") === lang));
+
+      appTitle.textContent = i18n[lang].appName;
+      footerAppName.textContent = i18n[lang].appName;
+      document.title = i18n[lang].pageTitle;
+      metaDesc.setAttribute("content", i18n[lang].metaDescription);
+
+      subtitle.textContent = i18n[lang].subtitle;
+      deviceDetectedLabel.textContent = i18n[lang].device_detected;
+      heroTitle.textContent = i18n[lang].hero_title;
+      heroBody.textContent = i18n[lang].hero_body;
+      showOptions.textContent = i18n[lang].see_options;
+
+      const d = detectDevice();
+      deviceName.textContent = d.label;
+
+      if (d.key === "android"){
+        smartCta.textContent = i18n[lang].cta_android;
+        smartCta.removeAttribute("download");
+        smartCta.href = "#card-android";
+        heroHint.textContent = i18n[lang].hint_android;
+      } else if (d.key === "ios"){
+        smartCta.textContent = i18n[lang].cta_ios;
+        smartCta.removeAttribute("download");
+        smartCta.href = "#card-ios";
+        heroHint.textContent = i18n[lang].hint_ios;
+      } else {
+        smartCta.textContent = i18n[lang].cta_web;
+        smartCta.removeAttribute("download");
+        smartCta.href = "https://salud.fenixsoular.com.ar/";
+        heroHint.textContent = i18n[lang].hint_web;
+      }
+    }
+
+    smartCta.addEventListener("click", (e) => {
+      const d = detectDevice();
+      if (d.key === "ios"){ e.preventDefault(); scrollToCard(cardIOS); }
+      else if (d.key === "android"){ e.preventDefault(); scrollToCard(cardAndroid); }
+    });
+
+    showOptions.addEventListener("click", () => {
+      document.querySelector(".grid").scrollIntoView({ behavior:"smooth", block:"start" });
+      clearActive();
+    });
+
+    btnEs.addEventListener("click", () => setLang("es"));
+    btnEn.addEventListener("click", () => setLang("en"));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLang(detectLang());
+  </script>
 </body>
 </html>
