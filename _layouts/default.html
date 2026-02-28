@@ -14,10 +14,19 @@
   <!-- Global Styles -->
   <link rel="stylesheet" href="/assets/style.css">
 
+  {% if page.extra_css %}
+  <link rel="stylesheet" href="{{ page.extra_css }}">
+  {% endif %}
+
   <!-- Global JS -->
   <script defer src="/assets/site.js"></script>
 </head>
+
 <body>
   {{ content }}
+
+  {% if page.extra_js %}
+  <script defer src="{{ page.extra_js }}"></script>
+  {% endif %}
 </body>
 </html>
