@@ -9,7 +9,6 @@
 
   <style>
     :root {
-      /* Identidad visual de index-new.html */
       --bg-page: #f9f9f9;
       --card-bg: rgba(255, 255, 255, 0.75);
       --card-border: rgba(0, 0, 0, 0.10);
@@ -34,7 +33,6 @@
       line-height: 1.5;
     }
 
-    /* --- HEADER (Copiado de index-new) --- */
     header {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
@@ -70,7 +68,6 @@
     }
     .lang-selector button.active { background: #fff; color: var(--text-main); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
-    /* --- LAYOUT & DOWNLOAD CONTENT --- */
     .wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 20px; }
     
     .download-hero { margin-bottom: 32px; }
@@ -86,7 +83,6 @@
       margin-bottom: 24px;
     }
 
-    /* CTA Inteligente */
     .device-pill {
       display: inline-flex;
       padding: 6px 14px;
@@ -99,7 +95,6 @@
     }
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
     
-    /* Botones Estilo index-new */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 12px 24px; border-radius: var(--radius-md);
@@ -110,7 +105,6 @@
     .btn-secondary { background: #fff; color: var(--text-main); }
     .btn:hover { filter: brightness(0.95); }
 
-    /* Grid de Opciones */
     .options-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .option-card h3 { margin-top: 0; font-size: 20px; }
     .os-chip {
@@ -123,7 +117,6 @@
     .steps li { margin-bottom: 8px; }
     code { background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
 
-    /* --- FOOTER (Copiado de index-new) --- */
     footer { border-top: 1px solid var(--card-border); background: #fff; padding: 30px 20px; margin-top: 60px; }
     .footer-inner {
       max-width: var(--max-width); margin: 0 auto; display: flex;
@@ -164,56 +157,56 @@
 
   <main class="wrap">
     <div class="download-hero">
-      <h1 id="pageTitle">My Health Hub</h1>
-      <p class="hero-p" id="pageSubtitle">
+      <h1 id="pageTitle" data-i18n="dl_title">My Health Hub</h1>
+      <p class="hero-p" id="pageSubtitle" data-i18n="dl_sub">
         Elegí cómo usar tu app: Android, iPhone/iPad o versión web.
       </p>
     </div>
 
     <section class="card">
       <div class="device-pill" id="devicePill">Detectando dispositivo...</div>
-      <h2 style="margin: 0 0 8px; font-size: 22px;">Empezar ahora</h2>
-      <p class="hero-p" style="font-size: 15px; margin: 0;">Este botón elige automáticamente la mejor opción para tu dispositivo.</p>
+      <h2 style="margin: 0 0 8px; font-size: 22px;" data-i18n="dl_start">Empezar ahora</h2>
+      <p class="hero-p" style="font-size: 15px; margin: 0;" data-i18n="dl_auto">Este botón elige automáticamente la mejor opción para tu dispositivo.</p>
       
       <div class="cta-row">
         <a class="btn btn-primary" id="smartCta" href="https://salud.fenixsoular.com.ar/" target="_blank">
           Usar versión web
         </a>
-        <button class="btn btn-secondary" id="toggleOptions">Ver todas las opciones</button>
+        <button class="btn btn-secondary" id="toggleOptions" data-i18n="dl_view_all">Ver todas las opciones</button>
       </div>
-      <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Podés usarla desde la web sin instalar nada.</p>
+      <p style="font-size: 12px; color: var(--text-muted); margin: 0;" data-i18n="dl_note">Podés usarla desde la web sin instalar nada.</p>
     </section>
 
     <div class="options-grid" id="allOptions" style="display: none;">
       <article class="card option-card">
         <div class="os-chip">ANDROID</div>
-        <h3>Instalar en Android</h3>
-        <p style="font-size: 14px; color: var(--text-muted);">Instalación rápida vía PWA desde <strong>Chrome</strong>.</p>
+        <h3 data-i18n="opt_and_t">Instalar en Android</h3>
+        <p style="font-size: 14px; color: var(--text-muted);" data-i18n="opt_and_p">Instalación rápida vía PWA desde <strong>Chrome</strong>.</p>
         <ol class="steps">
-          <li>Abrí <strong>Chrome</strong>.</li>
-          <li>Entrá a <code>salud.fenixsoular.com.ar</code></li>
-          <li>Menú <strong>⋮</strong> → <strong>Instalar aplicación</strong>.</li>
+          <li data-i18n="opt_and_s1">Abrí <strong>Chrome</strong>.</li>
+          <li data-i18n="opt_and_s2">Entrá a <code>salud.fenixsoular.com.ar</code></li>
+          <li data-i18n="opt_and_s3">Menú <strong>⋮</strong> → <strong>Instalar aplicación</strong>.</li>
         </ol>
-        <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank">Abrir App</a>
+        <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank" data-i18n="btn_open">Abrir App</a>
       </article>
 
       <article class="card option-card">
         <div class="os-chip">IPHONE / IPAD</div>
-        <h3>Instalar en iOS</h3>
-        <p style="font-size: 14px; color: var(--text-muted);">Usá <strong>Safari</strong> para añadirla a tu inicio.</p>
+        <h3 data-i18n="opt_ios_t">Instalar en iOS</h3>
+        <p style="font-size: 14px; color: var(--text-muted);" data-i18n="opt_ios_p">Usá <strong>Safari</strong> para añadirla a tu inicio.</p>
         <ol class="steps">
-          <li>Abrí <strong>Safari</strong>.</li>
-          <li>Entrá a <code>salud.fenixsoular.com.ar</code></li>
-          <li>Tocá <strong>Compartir</strong> (↑) → <strong>Añadir a pantalla de inicio</strong>.</li>
+          <li data-i18n="opt_ios_s1">Abrí <strong>Safari</strong>.</li>
+          <li data-i18n="opt_ios_s2">Entrá a <code>salud.fenixsoular.com.ar</code></li>
+          <li data-i18n="opt_ios_s3">Tocá <strong>Compartir</strong> (↑) → <strong>Añadir a pantalla de inicio</strong>.</li>
         </ol>
-        <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank">Abrir App</a>
+        <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank" data-i18n="btn_open">Abrir App</a>
       </article>
 
       <article class="card option-card">
         <div class="os-chip">WEB</div>
-        <h3>Versión Navegador</h3>
-        <p style="font-size: 14px; color: var(--text-muted);">Ideal para PC o si no querés instalar nada.</p>
-        <div style="height: 105px;"></div> <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank">Usar en la Web</a>
+        <h3 data-i18n="opt_web_t">Versión Navegador</h3>
+        <p style="font-size: 14px; color: var(--text-muted);" data-i18n="opt_web_p">Ideal para PC o si no querés instalar nada.</p>
+        <div style="height: 105px;"></div> <a class="btn btn-primary" href="https://salud.fenixsoular.com.ar/" target="_blank" data-i18n="btn_use_web">Usar en la Web</a>
       </article>
     </div>
   </main>
@@ -222,10 +215,10 @@
     <div class="footer-inner">
       <div class="footer-links">
         <a href="/privacy/">Privacy Policy</a>
-        <a href="/">Volver al Inicio</a>
+        <a href="/" data-i18n="footer_home">Volver al Inicio</a>
       </div>
       <div>
-        <span style="font-size: 13px; opacity: 0.8;">Contacto:</span>
+        <span style="font-size: 13px; opacity: 0.8;" data-i18n="contact_label">Contacto:</span>
         <a href="mailto:fenixsoular@gmail.com" class="contact-badge">fenixsoular@gmail.com</a>
       </div>
       <div>
@@ -235,45 +228,142 @@
   </footer>
 
   <script>
-    (function () {
-      // 1. Lógica de Detección de Dispositivo (de index-download)
-      var ua = navigator.userAgent || "";
-      var isIOS = /iPhone|iPad|iPod/i.test(ua);
-      var isAndroid = /Android/i.test(ua);
-      var pill = document.getElementById("devicePill");
-      var cta = document.getElementById("smartCta");
+    const dict = {
+      es: {
+        dl_title: "My Health Hub",
+        dl_sub: "Elegí cómo usar tu app: Android, iPhone/iPad o versión web.",
+        dl_start: "Empezar ahora",
+        dl_auto: "Este botón elige automáticamente la mejor opción para tu dispositivo.",
+        dl_view_all: "Ver todas las opciones",
+        dl_hide: "Ocultar opciones",
+        dl_note: "Podés usarla desde la web sin instalar nada.",
+        opt_and_t: "Instalar en Android",
+        opt_and_p: "Instalación rápida vía PWA desde <strong>Chrome</strong>.",
+        opt_and_s1: "Abrí <strong>Chrome</strong>.",
+        opt_and_s2: "Entrá a <code>salud.fenixsoular.com.ar</code>",
+        opt_and_s3: "Menú <strong>⋮</strong> → <strong>Instalar aplicación</strong>.",
+        opt_ios_t: "Instalar en iOS",
+        opt_ios_p: "Usá <strong>Safari</strong> para añadirla a tu inicio.",
+        opt_ios_s1: "Abrí <strong>Safari</strong>.",
+        opt_ios_s2: "Entrá a <code>salud.fenixsoular.com.ar</code>",
+        opt_ios_s3: "Tocá <strong>Compartir</strong> (↑) → <strong>Añadir a pantalla de inicio</strong>.",
+        opt_web_t: "Versión Navegador",
+        opt_web_p: "Ideal para PC o si no querés instalar nada.",
+        btn_open: "Abrir App",
+        btn_use_web: "Usar en la Web",
+        footer_home: "Volver al Inicio",
+        contact_label: "Contacto:",
+        dev_desktop: "Dispositivo detectado: Desktop",
+        dev_android: "Dispositivo detectado: Android",
+        dev_ios: "Dispositivo detectado: iPhone / iPad",
+        cta_web: "Usar versión web",
+        cta_android: "Instalar / Abrir (Android)",
+        cta_ios: "Instalar / Abrir (iOS)"
+      },
+      en: {
+        dl_title: "My Health Hub",
+        dl_sub: "Choose how to use your app: Android, iPhone/iPad, or web version.",
+        dl_start: "Start now",
+        dl_auto: "This button automatically chooses the best option for your device.",
+        dl_view_all: "View all options",
+        dl_hide: "Hide options",
+        dl_note: "You can use it from the web without installing anything.",
+        opt_and_t: "Install on Android",
+        opt_and_p: "Quick PWA installation via <strong>Chrome</strong>.",
+        opt_and_s1: "Open <strong>Chrome</strong>.",
+        opt_and_s2: "Go to <code>salud.fenixsoular.com.ar</code>",
+        opt_and_s3: "Menu <strong>⋮</strong> → <strong>Install app</strong>.",
+        opt_ios_t: "Install on iOS",
+        opt_ios_p: "Use <strong>Safari</strong> to add it to your home screen.",
+        opt_ios_s1: "Open <strong>Safari</strong>.",
+        opt_ios_s2: "Go to <code>salud.fenixsoular.com.ar</code>",
+        opt_ios_s3: "Tap <strong>Share</strong> (↑) → <strong>Add to Home Screen</strong>.",
+        opt_web_t: "Browser Version",
+        opt_web_p: "Ideal for PC or if you don't want to install anything.",
+        btn_open: "Open App",
+        btn_use_web: "Use on Web",
+        footer_home: "Back to Home",
+        contact_label: "Contact:",
+        dev_desktop: "Detected device: Desktop",
+        dev_android: "Detected device: Android",
+        dev_ios: "Detected device: iPhone / iPad",
+        cta_web: "Use web version",
+        cta_android: "Install / Open (Android)",
+        cta_ios: "Install / Open (iOS)"
+      }
+    };
 
-      var deviceLabel = "Desktop (browser)";
-      var ctaText = "Usar versión web";
+    function setLang(lang){
+      const d = dict[lang] || dict.es;
+      document.documentElement.lang = lang;
+      
+      // Traducir elementos estáticos
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(d[key]) el.innerHTML = d[key];
+      });
+
+      // Actualizar botones de idioma
+      document.getElementById("btnES").classList.toggle("active", lang==="es");
+      document.getElementById("btnEN").classList.toggle("active", lang==="en");
+      
+      localStorage.setItem("fs_lang", lang);
+      
+      // Actualizar lógica dinámica (Pill y Smart CTA)
+      updateSmartCta(lang);
+      
+      // Actualizar estado del botón de toggle si está abierto
+      const allOptions = document.getElementById("allOptions");
+      const btnToggle = document.getElementById("toggleOptions");
+      if(allOptions.style.display !== "none") {
+        btnToggle.textContent = d.dl_hide;
+      } else {
+        btnToggle.textContent = d.dl_view_all;
+      }
+    }
+
+    function updateSmartCta(lang) {
+      const d = dict[lang] || dict.es;
+      const ua = navigator.userAgent || "";
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+      const isAndroid = /Android/i.test(ua);
+      
+      const pill = document.getElementById("devicePill");
+      const cta = document.getElementById("smartCta");
+
+      let deviceLabel = d.dev_desktop;
+      let ctaText = d.cta_web;
 
       if (isAndroid) {
-        deviceLabel = "Dispositivo detectado: Android";
-        ctaText = "Instalar / Abrir (Android)";
+        deviceLabel = d.dev_android;
+        ctaText = d.cta_android;
       } else if (isIOS) {
-        deviceLabel = "Dispositivo detectado: iPhone / iPad";
-        ctaText = "Instalar / Abrir (iOS)";
-      } else {
-        deviceLabel = "Dispositivo detectado: Desktop";
+        deviceLabel = d.dev_ios;
+        ctaText = d.cta_ios;
       }
 
       if (pill) pill.textContent = deviceLabel;
       if (cta) cta.textContent = ctaText;
+    }
 
-      // 2. Mostrar/Ocultar Opciones
-      var all = document.getElementById("allOptions");
-      var btnToggle = document.getElementById("toggleOptions");
-      btnToggle.addEventListener("click", function () {
-        var isHidden = all.style.display === "none";
-        all.style.display = isHidden ? "grid" : "none";
-        btnToggle.textContent = isHidden ? "Ocultar opciones" : "Ver todas las opciones";
-      });
+    // Event Listeners
+    document.getElementById("btnES").addEventListener("click", ()=>setLang("es"));
+    document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
 
-      // 3. Idioma y Año
-      document.getElementById("year").textContent = new Date().getFullYear();
-      
-      // Simulación básica de cambio de idioma (puedes expandir con el dict de index-new)
-      document.getElementById("btnEN").onclick = () => alert("Language strings can be added here following index-new pattern.");
-    })();
+    const all = document.getElementById("allOptions");
+    const btnToggle = document.getElementById("toggleOptions");
+    
+    btnToggle.addEventListener("click", function () {
+      const isHidden = all.style.display === "none";
+      const currentLang = document.documentElement.lang || "es";
+      all.style.display = isHidden ? "grid" : "none";
+      btnToggle.textContent = isHidden ? dict[currentLang].dl_hide : dict[currentLang].dl_view_all;
+    });
+    
+    // Inicialización
+    const savedLang = localStorage.getItem("fs_lang") || (navigator.language.startsWith("es") ? "es" : "en");
+    setLang(savedLang);
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

@@ -9,7 +9,6 @@
 
   <style>
     :root {
-      /* Paleta extraída de index-download */
       --bg-page: #f9f9f9;
       --card-bg: rgba(255, 255, 255, 0.75);
       --card-border: rgba(0, 0, 0, 0.10);
@@ -51,10 +50,9 @@
       align-items: center;
       justify-content: space-between;
     }
-    .brand { display: flex; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; }
     .fenix-block { display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
     
-    /* Logos incrementados un 20% */
     .brand img.logo-icon { width: 53px; height: 53px; border-radius: 12px; object-fit: contain; }
     .brand img.logo-text { height: 50px; width: auto; }
     
@@ -224,13 +222,13 @@
 <body>
   <header>
     <div class="header-inner">
-      <div class="brand">
+      <a href="/" class="brand">
         <div class="fenix-block">
           <img src="/assets/img/logo.png" alt="Fenix SoulAR" class="logo-icon">
           <span class="sub">Digital Products</span>
         </div>
         <img src="/assets/img/logo-texto.png" alt="Fenix SoulAR" class="logo-text">
-      </div>
+      </a>
       <div class="lang-selector">
         <button id="btnES" class="active">ES</button>
         <button id="btnEN">EN</button>
@@ -310,7 +308,7 @@
               <p data-i18n="focus_property">Gestión de propiedades estructurada, simple y trazable.</p>
             </div>
           </div>
-          <a href="https://download.fenixsoular.com.ar/" class="mini-item" target="_blank">
+          <a href="/download/" class="mini-item">
             <div class="icon-box">↓</div>
             <div>
               <h3 data-i18n="focus_download_title">Centro de descargas</h3>
@@ -326,7 +324,7 @@
     <div class="footer-inner">
       <div class="footer-links">
         <a href="/privacy/">Privacy Policy</a>
-        <a href="https://download.fenixsoular.com.ar/" target="_blank" data-i18n="footer_download">Centro de descargas</a>
+        <a href="/download/" data-i18n="footer_download">Centro de descargas</a>
       </div>
       
       <div>
@@ -363,7 +361,7 @@
         focus_health: "Información clínica organizada, clara y lista cuando hace falta.",
         focus_property: "Gestión de propiedades estructurada, simple y trazable.",
         focus_download_title: "Centro de descargas",
-        focus_download: "Unificaremos las descargas en un solo sitio: download.fenixsoular.com.ar",
+        focus_download: "Unificaremos las descargas en un solo sitio.",
         contact_label: "Contacto:",
         footer_download: "Centro de descargas",
       },
@@ -388,7 +386,7 @@
         focus_health: "Organized health information—clear and ready when needed.",
         focus_property: "Structured, simple, traceable property management.",
         focus_download_title: "Download Center",
-        focus_download: "We’ll centralize downloads at: download.fenixsoular.com.ar",
+        focus_download: "We’ll centralize downloads here.",
         contact_label: "Contact:",
         footer_download: "Download center",
       }
@@ -409,7 +407,6 @@
     document.getElementById("btnES").addEventListener("click", ()=>setLang("es"));
     document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
     
-    // Init
     const savedLang = localStorage.getItem("fs_lang") || (navigator.language.startsWith("es") ? "es" : "en");
     setLang(savedLang);
     document.getElementById("year").textContent = new Date().getFullYear();
